@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EduGenie 2.0</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <h1>EduGenie 2.0</h1>
+  <p class="tagline">AI-Powered Adaptive Learning Platform</p>
+</header>
+
+<section id="user-section" class="card">
+  <h2>1. Learner Profile</h2>
+  <div class="row">
+    <input id="user-name" placeholder="Your name" />
+    <select id="user-level">
+      <option value="kid">Explain like I'm 10</option>
+      <option value="high_school" selected>High school</option>
+      <option value="undergrad">Undergraduate</option>
+    </select>
+    <button onclick="createUser()">Start / Create Profile</button>
+  </div>
+  <p id="user-status">No profile yet.</p>
+</section>
+
+<nav class="tabs">
+  <button class="tab-btn active" onclick="showTab('ask')">Ask</button>
+  <button class="tab-btn" onclick="showTab('upload')">Upload Materials</button>
+  <button class="tab-btn" onclick="showTab('quiz')">Quiz</button>
+  <button class="tab-btn" onclick="showTab('path')">Learning Path</button>
+  <button class="tab-btn" onclick="showTab('progress')">Progress</button>
+</nav>
+
+<section id="tab-ask" class="card tab-content">
+  <h2>Ask EduGenie</h2>
+  <input id="ask-topic" placeholder="Topic (e.g. Pythagoras Theorem)" />
+  <textarea id="ask-question" placeholder="Type your question..."></textarea>
+  <label><input type="checkbox" id="use-rag" /> Answer from my uploaded materials (RAG)</label>
+  <button onclick="askQuestion()">Ask</button>
+  <div id="ask-answer" class="answer-box"></div>
+</section>
+
+<section id="tab-upload" class="card tab-content" style="display:none">
+  <h2>Upload Study Materials</h2>
+  <input type="file" id="upload-file" />
+  <button onclick="uploadFile()">Upload & Index</button>
+  <div id="upload-status"></div>
+</section>
+
+<section id="tab-quiz" class="card tab-content" style="display:none">
+  <h2>Adaptive Quiz</h2>
+  <input id="quiz-topic" placeholder="Topic (e.g. SQL Joins)" />
+  <select id="quiz-difficulty">
+    <option value="easy">Easy</option>
+    <option value="medium" selected>Medium</option>
+    <option value="hard">Hard</option>
+  </select>
+  <button onclick="generateQuiz()">Generate Quiz</button>
+  <div id="quiz-area"></div>
+</section>
+
+<section id="tab-path" class="card tab-content" style="display:none">
+  <h2>Dynamic Learning Path</h2>
+  <input id="path-subject" placeholder="Subject (e.g. SQL)" />
+  <button onclick="generatePath()">Generate Path</button>
+  <button onclick="loadPath()">Refresh Path</button>
+  <ul id="path-list"></ul>
+</section>
+
+<section id="tab-progress" class="card tab-content" style="display:none">
+  <h2>Progress Dashboard</h2>
+  <button onclick="loadProgress()">Refresh</button>
+  <div id="progress-area"></div>
+</section>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
